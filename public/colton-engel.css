@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 1in;
+  background-color:white;
+  
+}
+#colton{
+  background-color: white;
+}
+
+h1 {
+  color: rgb(0,0,255);
+  text-align: center;
+  font-weight:bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 1500px;
+  font-family:helvetica,arial,sans-serif;
+}
+.colton{
+  color:blue;
+  font-size:18px;
+}
+
+a{
+  text-decoration:none;
+}
+
+button a{
+  color:black;
+}
+
+ul.menu{
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #;
+  text-decoration:none;
+  
+}
+
+li.menu{
+  float: right;
+}
+
+li a.menu{
+  display: block;
+  color: black;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  
+}
+
+button {
+  font-size: 16px;
+  height: 50px;
+  width: 200px;
+  border-radius: 3px;
+  background-color: orange;
+  border: 1px solid grey;
+  box-shadow: 2px 2px teal;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellow;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.portrait{
+  height:60%;
+  width:20%
+}
+.landscape{
+  height:75%;
+  width:75%;
+}
+#backgroundimage{
+  height:1344px;
+  width:1792px;
+  z-index: -1;
+  position:fixed;
+  top:0px;
+  left:0px;
+  right:20px;
+  bottom:20px;
+}

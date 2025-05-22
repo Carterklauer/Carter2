@@ -1,17 +1,19 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+  <head>
     <link id="favicon" rel="icon" href="https://cdn.glitch.global/1760db9d-c13a-4b0a-a542-608419c30c2b/2002%20Dodge%20Ram%201500.jpg?v=1693270025684" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Home Page">
-    <title>Carter2</title>
+    <title>Carter's Site</title>
     
     
   <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/main.css">
     <script src="/content-loader.js"></script>
     
-  </head>
+</head>
   <body>
     <header>
       <h1>Carter's Site</h1>
@@ -71,9 +73,15 @@
       <span style="color:rgb(255,125,0)">Hello welcome to my site.</span>
       <p>
         I hope you enjoy the content. The content page is where public content. A new page will be covering changes to the site.</p>
-        <p>The public will be able to create accounts in order to see announcements for Rumble and YouTube channels.
+        <p>The public will be able to create accounts in order to see announcements for Rumble and YouTube channels possibly premium memberships and regular memberships. Some benefits from subscriptions will be done via by onedrive for storage space.
       </p>
       <script src="/home-page-events.js"></script>
     </main>
+    <script>
+      var loadable=document.getElementsByClassName("loadable");
+      for (var i = 0; i < loadable.length; i++) {
+        load(loadable[i].id);
+      }
+    </script>
   </body>
 </html>
