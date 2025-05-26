@@ -223,14 +223,6 @@ app.get("/colton/nissan-trucks", function(request, respond){
 app.get("/content", function (request, respond) {
   respond.sendFile(__dirname + "/public/content.html");
 });
-app.get("/create-requests", async(request, respond)=>{
-  let exitcode=Database.CreateRequestTable();
-  if(exitcode==0){
-    respond.redirect("/requests");
-  }else{
-    respond.redirect("/requests?failed=true");
-  }
-})
 app.get("/create-site-settings", async function(request,respond){
   if(request.session.Account_Type=="Owner"){
   await Database.InitiateSiteSettings()
