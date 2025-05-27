@@ -288,12 +288,12 @@ app.get("/initialize-users", async(request, respond)=>{
     respond.redirect("/");
   }})
 app.get("/init-account-types", async(request, respond)=>{
-  let exitcode=await Database.CreateAccountTypeTable()
+  /*let exitcode=await Database.CreateAccountTypeTable()
   if(exitcode==0){
     respond.redirect("/administrator");
   }else{
     respond.redirect("/administrator?failed=true");
-  }
+  }*/
 })
 
 app.get("/login-username", function(request, respond){
@@ -394,28 +394,8 @@ app.post("/login2", function(request, respond){
       Index=null;
       respond.redirect("/mandatory-pass-change");
     }else{
-      if(RecentLogins.length==0){
-        RecentLogins.push({"Username":LoginUser.Username, "Email":LoginUser.Email,"Index":Index})
-        //env.RecentLogins=request.session.RecentLogins
-        LoginUser=null
-        Index=null;
-        respond.redirect("/");
-      }else{
-        for(var i=0;i<RecentLogins.length;i++){
-          if(RecentLogins[i].Username==LoginUser.Username){
-            LoginUser=null;
-            Index=null;
-            respond.redirect("/");
-            return null
-          }
-        }
-        RecentLogins.push({"Username":Users[Index].Username, "Email":Users[Index].Email, "Index":Index})
-        LoginUser=null
-        Index=null;
-        respond.redirect("/");
-      }
-    }
-  }else
+	 respond.redirect("/")
+  }}else
   respond.redirect("/login-pass?passwordfailed=true");
 })
 app.post("/admin-login", function(request, respond){
@@ -440,11 +420,11 @@ app.post("/administrator-accounttype-selection",function(request, respond){
   }
 })
 
-app.post("/change-pass", async function(request, respond){
+/*app.post("/change-pass", async function(request, respond){
   var currentPassword=await Database.GetUserPassword(request.session.Username);
   if(request.body.CurrentPassword == currentPassword[0].Password){
     if(request.body.NewPassword.substring(0,8).toLowerCase!="password"&&request.body.NewPassword===request.body.ConfirmNewPassword){
-      //await Database.ChangePassword(request.body.NewPassword, request.session.Username)
+      await Database.ChangePassword(request.body.NewPassword, request.session.Username)
       respond.redirect("/account-home")
     }else{
       respond.redirect("/change-password?passworddoesnotmatch=true")
@@ -452,8 +432,8 @@ app.post("/change-pass", async function(request, respond){
   }else{
     respond.redirect("/change-password?currentpasswordmissedmatched=true")
   }
-})
-app.post("/mandatory-password", async function(request, respond){
+})*/
+/*app.post("/mandatory-password", async function(request, respond){
   if(request.body.NewPassword.substring(0,8).toLowerCase()!="password"){
     if(request.body.NewPassword==request.body.ConfirmNewPassword){
       await Database.ChangePassword(request.body.NewPassword, LoginUser.Username)
@@ -465,9 +445,9 @@ app.post("/mandatory-password", async function(request, respond){
   }else{
     respond.redirect("/mandatory-pass-change?falied=true")
   }
-})
+})*/
 // Public new account
-app.post("/new-account", async function(request, respond){
+/*app.post("/new-account", async function(request, respond){
   let Account_Type="Standard"
   let PCCAList= await Database.GetSpecificSetting("Public Can Create Accounts")
   let PCCA=PCCAList[0].Stat
@@ -492,8 +472,8 @@ app.post("/new-account", async function(request, respond){
   }else{
     respond.redirect("/?passwordmismatched=true")
   }
-})
-app.post("/delete-account", async function(request, respond){
+})*/
+/*app.post("/delete-account", async function(request, respond){
   if((Database.GetUserAccountType(request.body.Username)!=="Owner"||Database.GetUserAccountType(request.body.Username)!=="Administrator")||((Database.GetUserAccountType(Database.GetUserAccountType(request.body.Username)!="Owner")&&request.session.Username=="Carter"))){
     var exitcode=await Database.DeleteUser(Capitalize(request.body.DelUsername))
     if(exitcode==0){
@@ -503,8 +483,8 @@ app.post("/delete-account", async function(request, respond){
   }else{
     respond.redirect("/delete-user.html?cantdeleteaccount=true")
   }
-})
-app.post("/search-user", async function(request,respond){
+})*/
+/*app.post("/search-user", async function(request,respond){
   let userInfo
   if(request.session.Account_Type=="Owner"){
     userInfo=await Database.GetUserInfo(request.body.Username)
@@ -515,4 +495,4 @@ app.post("/search-user", async function(request,respond){
     UserResult=GetUser(userInfo)
     respond.redirect("/search-users?success=true")
   }
-})
+})*/
