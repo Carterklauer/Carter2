@@ -89,7 +89,7 @@ app.use(express.static("public"));
 app.use(
   cookieSession({
     name: "session",
-    keys: [env.KEY1, env.KEY2, env.KEY3, env.KEY4,env.RecentLogins],
+    keys: [env.KEY1, env.KEY2, env.KEY3, env.KEY4],
     
   })
 );
@@ -106,7 +106,6 @@ var AccountTypes=[]
 var UserEmail
 var UserResult
 var User
-var RecentLogins=SetRecentLogins()
 
 function DisplayUsers(UserList){ let Users2="<table><tr><td>Name</td><td>Username</td><td>Email</td><td>Password</td><td>Account Type</td></tr>"
 if(UserList==[]){
@@ -175,12 +174,12 @@ app.get("/administrator-login", function(request, respond){
 app.get("/administrator-login2",function(request,respond){
   respond.sendFile(__dirname+"/public/administrator-login2.html")
 })
-app.get("/administrator-app-login",async function(request,respond){
- /* var url=request.url
+/*app.get("/administrator-app-login",async function(request,respond){
+  var url=request.url
   var username=Splice(url,"?")
   var result=await Database.Get()
-  respond.send()*/
-})
+  respond.send()
+})*/
 app.get("/admin-delete-user",function(request,respond){
   if(request.session.Account_Type=="Owner"||request.session.Account_Type=="Administrator"){
     respond.sendFile(__dirname+"/Administrator/administrator-delete-user.html")
@@ -232,10 +231,10 @@ app.get("/create-site-settings", async function(request,respond){
   }
   
 })
-app.get("/delete-request-table", async(request, respond)=>{
+/*app.get("/delete-request-table", async(request, respond)=>{
   await Database.DeleteRequests()
   respond.redirect("/requests-home")
-})
+})*/
 app.get("/discord-server",function(request,respond){
   respond.redirect("https://discord.gg/HKcjqDddEc")
 })
@@ -279,12 +278,12 @@ app.get("/getsettings",async function(request,respond){
 })
 app.get("/initialize-users", async(request, respond)=>{
   if(request.session.Username=="Carter"){
-    let exitcode= await Database.InitializeUsers();
+    /*let exitcode= await Database.InitializeUsers();
     if(exitcode==0){
       respond.redirect("/administrator");
     }else{
       respond.redirect("/administrator?initusersfailed=true");
-    }
+    }*/
   }else{
     respond.redirect("/");
   }})
@@ -337,15 +336,15 @@ app.get("/search-users", function(request,respond){
 
 app.post("/public-can-create-accounts",function(request, respond){
   if(request.body.PCCA=="Off"){
-    Database.ChangeSetting("Public Can Create Accounts","Off");
+    //Database.ChangeSetting("Public Can Create Accounts","Off");
   }else if(request.body.PCCA=="Test"){
     Database.ChangeSetting("Public Can Create Accounts","Test");
   }else if(request.body.PCCA=="On"){
-    Database.ChangeSetting("Public Can Create Accounts","On")
+    //Database.ChangeSetting("Public Can Create Accounts","On")
   }
   respond.redirect("/administrator/settings")
 })
-app.post("/site-under-construction",async function(request, respond){
+/*app.post("/site-under-construction",async function(request, respond){
   if(request.body.Construction=="On"){
     await Database.ChangeSetting("Site Under Construction", "On")
     respond.redirect("/administrator/settings");
@@ -379,7 +378,7 @@ app.post("/recent-login", function(request, respond){
   }else{
     respond.redirect("/login?failed=true")
   }
-})
+})*/
 app.post("/login", async function(request, respond){
   Users=await GetUsers()
   Login(request, respond)
@@ -392,10 +391,7 @@ app.post("/login2", function(request, respond){
     request.session.Email=LoginUser.Email
     request.session.Account_Type=LoginUser.Account_Type
     if(LoginUser.Password=="Password!"){
-      RecentLogins.push({"Username":LoginUser.Username, "Email":LoginUser.Email,"Index":Index})
-      //env.RecentLogins.push({"Username":LoginUser.Username, "Email":LoginUser.Email,"Index":Index})
       Index=null;
-      env.RecentLogins=request.session.RecentLogins;
       respond.redirect("/mandatory-pass-change");
     }else{
       if(RecentLogins.length==0){
@@ -448,7 +444,7 @@ app.post("/change-pass", async function(request, respond){
   var currentPassword=await Database.GetUserPassword(request.session.Username);
   if(request.body.CurrentPassword == currentPassword[0].Password){
     if(request.body.NewPassword.substring(0,8).toLowerCase!="password"&&request.body.NewPassword===request.body.ConfirmNewPassword){
-      await Database.ChangePassword(request.body.NewPassword, request.session.Username)
+      //await Database.ChangePassword(request.body.NewPassword, request.session.Username)
       respond.redirect("/account-home")
     }else{
       respond.redirect("/change-password?passworddoesnotmatch=true")
