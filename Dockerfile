@@ -1,3 +1,4 @@
 FROM node:20-alpine
 WORKDIR /
-RUN package.json
+CMD package.json
+RUN server.js
