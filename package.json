@@ -13,7 +13,13 @@
     "express": "^4.21.2",
     "cookie-session": "^2.1.0",
     "sqlite3": "^5.1.7",
-    "sqlite": "^5.1.1"
+    "sqlite": "^5.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-spring": "^10.0.1",
+    "wouter": "^3.7.1",
+    "react-helmet-async": "^2.0.5",
+    "@vitejs/plugin-react": "^4.0.3"
   },
   "engines": {
     "node": "12.x"
