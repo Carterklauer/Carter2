@@ -15,7 +15,7 @@
     "sqlite3": "^5.1.7",
     "sqlite": "^5.1.1",
     "react": "^18.0.0",
-    "react-dom": "^19.1.0",
+    "react-dom": "^18.0.0",
     "react-spring": "^10.0.1",
     "wouter": "^3.7.1",
     "react-helmet-async": "^2.0.5",
