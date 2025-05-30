@@ -7,7 +7,10 @@
   "description": "A simple Node app with SQLite as a database management system, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start":"vite",
+    "build":"vite build",
+    "serve":"vite preview"
   },
   "dependencies": {
     "express": "^4.21.2",
@@ -20,6 +23,9 @@
     "wouter": "^3.7.1",
     "react-helmet-async": "^2.0.5",
     "@vitejs/plugin-react": "^4.0.3"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
   },
   "engines": {
     "node": "12.x"
