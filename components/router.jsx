@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Switch, Route, Router } from "wouter";
 import Home from "../public/pages/home";
+import AdminstratorLogin from "../public/pages/administrator-login"
 
 /**
 * The router is imported in app.jsx
@@ -13,5 +14,6 @@ import Home from "../public/pages/home";
 export default () => (
     <Switch>
       <Route path="/" component={Home} />
+        <Route path="/administrator-login" component={AdministratorLogin} />
     </Switch>
 );
