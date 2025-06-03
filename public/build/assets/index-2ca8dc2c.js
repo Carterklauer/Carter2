@@ -2422,6 +2422,8 @@ function Em() {
     a(!l);
   }
   if (
+    (document.querySelector("#Email"),
+    document.querySelector("#Password"),
     !t && !l && Sm() == !1)
   )
     return b.jsxs(b.Fragment, {
